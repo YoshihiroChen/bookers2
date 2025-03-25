@@ -1,0 +1,52 @@
+<h2><%= @user.name %>さんのプロフィール</h2>
+<p><strong>自己紹介:</strong> <%= @user.introduction %></p>
+
+<h3>新しい本を投稿する</h3>
+
+<%= form_with(model: @book, url: books_path, local: true) do |f| %>
+  <% if @book.errors.any? %>
+    <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+
+  <%= f.submit 'Create Book', class: 'btn btn-primary mt-2' %>
+<% end %>
+
+
+<h3 class="mt-5">投稿一覧</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>感想</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+        <td>
+          <% if book.user == current_user %>
+            <%= link_to 'Edit', edit_book_path(book), class: 'btn btn-sm btn-warning' %>
+            <%= link_to 'Delete', book_path(book), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
