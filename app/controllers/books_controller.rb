@@ -2,6 +2,20 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
+  def index
+    @user = current_user
+    @book = Book.new
+    @books = Book.all
+  end
+  
+
+  def show
+    @book = Book.find(params[:id])
+    @user = @book.user              # 投稿者
+    @current_user = current_user    # 当前登录者
+    @new_book = Book.new
+  end
+
   def create
     @book = current_user.books.new(book_params)
     if @book.save
@@ -17,13 +31,14 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    redirect_to user_path(current_user) unless @book.user == current_user
   end
 
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      flash[:notice] = "Book was successfully updated."
-      redirect_to user_path(current_user)
+      flash[:notice] = "Book updated successfully."
+      redirect_to book_path(@book)
     else
       flash.now[:alert] = "There was an error updating the book."
       render :edit

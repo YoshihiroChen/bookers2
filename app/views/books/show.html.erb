@@ -1,2 +1,51 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<!-- 投稿者信息 -->
+<h2><%= @user.name %> さんのプロフィール</h2>
+
+<% if @user.image.attached? %>
+  <%= image_tag @user.image, width: 100, height: 100, class: "rounded-circle" %>
+<% else %>
+  <%= image_tag 'no_image.jpg', width: 100, height: 100, class: "rounded-circle" %>
+<% end %>
+
+
+<p><strong>自己紹介:</strong> <%= @user.introduction %></p>
+<%= link_to 'Edit My Profile', edit_user_path(current_user), class: 'btn btn-outline-primary btn-sm mt-2' %>
+
+<hr>
+
+<!-- 投稿表单（和上面一样）-->
+<h3>新しい本を投稿する</h3>
+
+<%= form_with(model: @new_book, url: books_path, local: true) do |f| %>
+  <% if @new_book.errors.any? %>
+    <ul>
+      <% @new_book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+
+  <%= f.submit '投稿する' %>
+<% end %>
+
+<hr>
+
+<!-- 当前这本书的详情 -->
+<h3>この投稿の詳細</h3>
+<p><strong>タイトル：</strong> <%= @book.title %></p>
+<p><strong>感想：</strong> <%= @book.body %></p>
+
+<% if @book.user == current_user %>
+  <%= link_to '編集', edit_book_path(@book) %> |
+  <%= link_to '削除', book_path(@book), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+<% end %>
