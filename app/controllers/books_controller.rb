@@ -20,12 +20,12 @@ class BooksController < ApplicationController
     @book = current_user.books.new(book_params)
     if @book.save
       flash[:notice] = "Book was successfully created."
-      redirect_to user_path(current_user)
+      redirect_to book_path(@book)  # ✅ 修正跳转目标
     else
       @user = current_user
-      @books = current_user.books
+      @books = Book.all  # ✅ 注意：这里应是全部书籍，而不是 current_user.books
       flash.now[:alert] = "There was an error creating the book."
-      render 'users/show'
+      render 'books/index'  # ✅ 注意：失败时渲染的是 books/index，而不是 users/show
     end
   end
 
@@ -49,7 +49,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.destroy
     flash[:notice] = "Book was successfully deleted."
-    redirect_to user_path(current_user)
+    redirect_to books_path
   end
 
   private

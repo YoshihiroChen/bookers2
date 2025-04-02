@@ -14,7 +14,7 @@
 <hr>
 
 <!-- 投稿表单 -->
-<h3>新しい本を投稿する</h3>
+<h3>New book</h3>
 
 <%= form_with(model: @book, url: books_path, local: true) do |f| %>
   <% if @book.errors.any? %>
@@ -35,7 +35,7 @@
     <%= f.text_area :body %>
   </div>
 
-  <%= f.submit '投稿する' %>
+  <%= f.submit 'Create Book' %>
 <% end %>
 
 <hr>
