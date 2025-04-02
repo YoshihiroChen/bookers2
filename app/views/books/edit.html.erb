@@ -1,4 +1,4 @@
-<h2>本の投稿を編集する</h2>
+<h2>Editing Book</h2>
 
 <%= form_with(model: @book, url: book_path(@book), method: :patch, local: true) do |f| %>
   <% if @book.errors.any? %>
@@ -20,8 +20,11 @@
   </div>
 
   <div>
-    <%= f.submit '更新する', class: 'btn btn-primary' %>
+    <%= f.submit 'Update Book', class: 'btn btn-primary' %>
   </div>
 <% end %>
 
-<%= link_to '戻る', book_path(@book), class: 'btn btn-secondary mt-2' %>
+
+<%= link_to 'Back', books_path, class: 'btn btn-secondary mt-2' %>
+
+<%= link_to 'Show', book_path(@book), class: 'btn btn-secondary mt-2' %>

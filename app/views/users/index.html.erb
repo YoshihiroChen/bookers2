@@ -50,6 +50,7 @@
     <tr>
       <th>名前</th>
       <th>操作</th>
+      <th>プロフィール画像</th>  <!-- 新增这一列显示头像 -->
     </tr>
   </thead>
   <tbody>
@@ -63,6 +64,13 @@
         </td>
         <td>
           <%= link_to 'Show', user_path(user), class: 'btn btn-info btn-sm' %>
+        </td>
+        <td>
+          <% if user.profile_image.attached? %>
+            <%= image_tag user.profile_image.variant(resize_to_fill: [50, 50]), class: 'rounded-circle' %>  <!-- 头像 -->
+          <% else %>
+            <%= image_tag 'no_image.jpg', width: 50, height: 50, class: 'rounded-circle' %>  <!-- fallback 图像 -->
+          <% end %>
         </td>
       </tr>
     <% end %>
