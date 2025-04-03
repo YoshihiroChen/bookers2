@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
+  validates :email, presence: true, uniqueness: true
+
   validates :password, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
 
 
@@ -11,13 +13,6 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  def email_required?
-    false
-  end
-  
-  def will_save_change_to_email?
-    false
-  end
   
 
   # 重写：用 name 替代 email 作为认证字段
