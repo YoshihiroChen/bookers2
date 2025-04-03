@@ -284,10 +284,10 @@ Userモデルのテスト
 [32m      Booksリンクのアイコンが表示される[0m
 [32m      Log outリンクのアイコンが表示される[0m
     サイドバー
-[31m      ユーザ一覧画面でレンチアイコンが表示される (FAILED - 2)[0m
-[31m      ユーザ詳細画面でレンチアイコンが表示される (FAILED - 3)[0m
-[31m      投稿一覧画面でレンチアイコンが表示される (FAILED - 4)[0m
-[31m      投稿詳細画面でレンチアイコンが表示される (FAILED - 5)[0m
+[32m      ユーザ一覧画面でレンチアイコンが表示される[0m
+[32m      ユーザ詳細画面でレンチアイコンが表示される[0m
+[32m      投稿一覧画面でレンチアイコンが表示される[0m
+[32m      投稿詳細画面でレンチアイコンが表示される[0m
 
 Failures:
 
@@ -300,34 +300,10 @@ Failures:
      [31m  (compared using ==)[0m
      [36m# ./spec/system/03_finishing_touches_spec.rb:269:in `block (4 levels) in <main>'[0m
 
-  2) [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ一覧画面でレンチアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
-     [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:437:in `block (4 levels) in <main>'[0m
-
-  3) [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ詳細画面でレンチアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
-     [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:441:in `block (4 levels) in <main>'[0m
-
-  4) [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿一覧画面でレンチアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
-     [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:445:in `block (4 levels) in <main>'[0m
-
-  5) [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿詳細画面でレンチアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
-     [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:449:in `block (4 levels) in <main>'[0m
-
-Finished in 19.49 seconds (files took 1.22 seconds to load)
-[31m201 examples, 5 failures[0m
+Finished in 20.13 seconds (files took 1.21 seconds to load)
+[31m201 examples, 1 failure[0m
 
 Failed examples:
 
 [31mrspec ./spec/system/03_finishing_touches_spec.rb:265[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿編集画面 遷移できず、投稿一覧画面にリダイレクトされる[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:435[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ一覧画面でレンチアイコンが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:439[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ詳細画面でレンチアイコンが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:443[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿一覧画面でレンチアイコンが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:447[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿詳細画面でレンチアイコンが表示される[0m
 
