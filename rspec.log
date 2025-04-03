@@ -390,7 +390,7 @@ Failures:
       [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
       [36m# ./spec/system/03_finishing_touches_spec.rb:449:in `block (4 levels) in <main>'[0m
 
-Finished in 20.26 seconds (files took 1.25 seconds to load)
+Finished in 19.9 seconds (files took 3.74 seconds to load)
 [31m201 examples, 19 failures[0m
 
 Failed examples:

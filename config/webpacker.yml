@@ -8,9 +8,11 @@ default: &default
   cache_path: tmp/cache/webpacker
   webpack_compile_output: true
 
+  
+
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  additional_paths: []
+  additional_paths: ['app/javascript/stylesheets']
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
