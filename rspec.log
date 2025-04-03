@@ -270,24 +270,24 @@ Userモデルのテスト
 [32m    投稿詳細画面[0m
   アイコンのテスト
     トップ画面
-[31m      本のアイコンが表示される (FAILED - 2)[0m
+[32m      本のアイコンが表示される[0m
     アバウト画面
-[31m      本のアイコンが表示される (FAILED - 3)[0m
+[32m      本のアイコンが表示される[0m
     ヘッダー: ログインしていない場合
-[31m      Homeリンクのアイコンが表示される (FAILED - 4)[0m
-[31m      Aboutリンクのアイコンが表示される (FAILED - 5)[0m
-[31m      Sign upリンクのアイコンが表示される (FAILED - 6)[0m
-[31m      Log inリンクのアイコンが表示される (FAILED - 7)[0m
+[32m      Homeリンクのアイコンが表示される[0m
+[32m      Aboutリンクのアイコンが表示される[0m
+[32m      Sign upリンクのアイコンが表示される[0m
+[32m      Log inリンクのアイコンが表示される[0m
     ヘッダー: ログインしている場合
-[31m      Homeリンクのアイコンが表示される (FAILED - 8)[0m
-[31m      Usersリンクのアイコンが表示される (FAILED - 9)[0m
+[32m      Homeリンクのアイコンが表示される[0m
+[32m      Usersリンクのアイコンが表示される[0m
 [32m      Booksリンクのアイコンが表示される[0m
-[31m      Log outリンクのアイコンが表示される (FAILED - 10)[0m
+[32m      Log outリンクのアイコンが表示される[0m
     サイドバー
-[31m      ユーザ一覧画面でレンチアイコンが表示される (FAILED - 11)[0m
-[31m      ユーザ詳細画面でレンチアイコンが表示される (FAILED - 12)[0m
-[31m      投稿一覧画面でレンチアイコンが表示される (FAILED - 13)[0m
-[31m      投稿詳細画面でレンチアイコンが表示される (FAILED - 14)[0m
+[31m      ユーザ一覧画面でレンチアイコンが表示される (FAILED - 2)[0m
+[31m      ユーザ詳細画面でレンチアイコンが表示される (FAILED - 3)[0m
+[31m      投稿一覧画面でレンチアイコンが表示される (FAILED - 4)[0m
+[31m      投稿詳細画面でレンチアイコンが表示される (FAILED - 5)[0m
 
 Failures:
 
@@ -300,86 +300,32 @@ Failures:
      [31m  (compared using ==)[0m
      [36m# ./spec/system/03_finishing_touches_spec.rb:269:in `block (4 levels) in <main>'[0m
 
-  2) [STEP3] 仕上げのテスト アイコンのテスト トップ画面 本のアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-book, .fas.fa-book'[0m
-     [31m  expected to find css ".fa-solid.fa-book, .fas.fa-book" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:364:in `block (4 levels) in <main>'[0m
+  2) [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ一覧画面でレンチアイコンが表示される
+     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
+     [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:437:in `block (4 levels) in <main>'[0m
 
-  3) [STEP3] 仕上げのテスト アイコンのテスト アバウト画面 本のアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-book, .fas.fa-book'[0m
-     [31m  expected to find css ".fa-solid.fa-book, .fas.fa-book" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:376:in `block (4 levels) in <main>'[0m
+  3) [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ詳細画面でレンチアイコンが表示される
+     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
+     [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:441:in `block (4 levels) in <main>'[0m
 
-  4) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Homeリンクのアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-house, .fa-solid.fa-home, .fas.fa-home'[0m
-     [31m  expected to find css ".fa-solid.fa-house, .fa-solid.fa-home, .fas.fa-home" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:388:in `block (4 levels) in <main>'[0m
+  4) [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿一覧画面でレンチアイコンが表示される
+     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
+     [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:445:in `block (4 levels) in <main>'[0m
 
-  5) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Aboutリンクのアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-link, .fas.fa-link'[0m
-     [31m  expected to find css ".fa-solid.fa-link, .fas.fa-link" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:391:in `block (4 levels) in <main>'[0m
+  5) [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿詳細画面でレンチアイコンが表示される
+     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
+     [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:449:in `block (4 levels) in <main>'[0m
 
-  6) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Sign upリンクのアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-plus, .fas.fa-user-plus'[0m
-     [31m  expected to find css ".fa-solid.fa-user-plus, .fas.fa-user-plus" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:394:in `block (4 levels) in <main>'[0m
-
-  7) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Log inリンクのアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-right-to-bracket, .fa-solid.fa-sign-in-alt, .fas.fa-sign-in-alt'[0m
-     [31m  expected to find css ".fa-solid.fa-right-to-bracket, .fa-solid.fa-sign-in-alt, .fas.fa-sign-in-alt" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:397:in `block (4 levels) in <main>'[0m
-
-  8) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Homeリンクのアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-house, .fa-solid.fa-home, .fas.fa-home'[0m
-     [31m  expected to find css ".fa-solid.fa-house, .fa-solid.fa-home, .fas.fa-home" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:412:in `block (4 levels) in <main>'[0m
-
-  9) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Usersリンクのアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-users, .fas.fa-users'[0m
-     [31m  expected to find css ".fa-solid.fa-users, .fas.fa-users" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:415:in `block (4 levels) in <main>'[0m
-
-  10) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Log outリンクのアイコンが表示される
-      [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-right-from-bracket, .fa-solid.fa-sign-out-alt, .fas.fa-sign-out-alt'[0m
-      [31m  expected to find css ".fa-solid.fa-right-from-bracket, .fa-solid.fa-sign-out-alt, .fas.fa-sign-out-alt" but there were no matches[0m
-      [36m# ./spec/system/03_finishing_touches_spec.rb:421:in `block (4 levels) in <main>'[0m
-
-  11) [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ一覧画面でレンチアイコンが表示される
-      [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
-      [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
-      [36m# ./spec/system/03_finishing_touches_spec.rb:437:in `block (4 levels) in <main>'[0m
-
-  12) [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ詳細画面でレンチアイコンが表示される
-      [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
-      [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
-      [36m# ./spec/system/03_finishing_touches_spec.rb:441:in `block (4 levels) in <main>'[0m
-
-  13) [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿一覧画面でレンチアイコンが表示される
-      [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
-      [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
-      [36m# ./spec/system/03_finishing_touches_spec.rb:445:in `block (4 levels) in <main>'[0m
-
-  14) [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿詳細画面でレンチアイコンが表示される
-      [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog'[0m
-      [31m  expected to find css ".fa-solid.fa-user-gear, .fa-solid.fa-user-cog, .fas.fa-user-cog" but there were no matches[0m
-      [36m# ./spec/system/03_finishing_touches_spec.rb:449:in `block (4 levels) in <main>'[0m
-
-Finished in 24.22 seconds (files took 1.19 seconds to load)
-[31m201 examples, 14 failures[0m
+Finished in 19.49 seconds (files took 1.22 seconds to load)
+[31m201 examples, 5 failures[0m
 
 Failed examples:
 
 [31mrspec ./spec/system/03_finishing_touches_spec.rb:265[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿編集画面 遷移できず、投稿一覧画面にリダイレクトされる[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:363[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト トップ画面 本のアイコンが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:375[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト アバウト画面 本のアイコンが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:387[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Homeリンクのアイコンが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:390[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Aboutリンクのアイコンが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:393[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Sign upリンクのアイコンが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:396[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしていない場合 Log inリンクのアイコンが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:411[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Homeリンクのアイコンが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:414[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Usersリンクのアイコンが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:420[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Log outリンクのアイコンが表示される[0m
 [31mrspec ./spec/system/03_finishing_touches_spec.rb:435[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ一覧画面でレンチアイコンが表示される[0m
 [31mrspec ./spec/system/03_finishing_touches_spec.rb:439[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー ユーザ詳細画面でレンチアイコンが表示される[0m
 [31mrspec ./spec/system/03_finishing_touches_spec.rb:443[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト サイドバー 投稿一覧画面でレンチアイコンが表示される[0m

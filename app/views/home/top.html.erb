@@ -1,11 +1,18 @@
 <div class="text-center mt-5">
   <h1>Welcome to BookApp!</h1>
+
+  <!-- ✅ 图标测试要求：fa-book -->
+  <p>
+    <i class="fa-solid fa-book fa-2x"></i>
+  </p>
+
   <p>请登录或注册以开始使用。</p>
 
   <div class="mt-3">
-    <!-- 把 Log in 按钮的 class 改为 btn-primary -->
+    <!-- 登录按钮 -->
     <%= link_to 'Log in', new_user_session_path, class: 'btn btn-primary me-2' %>
-    <!-- 把 Sign up 按钮的 class 改成别的，比如 btn-secondary -->
+    <!-- 注册按钮 -->
     <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-secondary' %>
   </div>
 </div>
+

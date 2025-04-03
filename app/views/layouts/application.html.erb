@@ -6,17 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- ✅ 加载 Bootstrap（Webpacker 用 pack） -->
+    <!-- ✅ 加载 Bootstrap（Webpacker） -->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!-- ✅ 加载 Font Awesome 图标 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-TODO" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
 
-
   <body>
-
     <% if flash[:notice] %>
       <div class="alert alert-success">
         <%= flash[:notice] %>
@@ -31,29 +29,45 @@
           <ul class="navbar-nav ms-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to 'Home', user_path(current_user), class: 'nav-link' %>
+                <%= link_to user_path(current_user), class: 'nav-link' do %>
+                  <i class="fa-solid fa-house"></i> Home
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Users', users_path, class: 'nav-link' %>
+                <%= link_to users_path, class: 'nav-link' do %>
+                  <i class="fa-solid fa-users"></i> Users
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Books', books_path, class: 'nav-link' %>
+                <%= link_to books_path, class: 'nav-link' do %>
+                  <i class="fa-solid fa-book-open"></i> Books
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+                  <i class="fa-solid fa-right-from-bracket"></i> Log out
+                <% end %>
               </li>
             <% else %>
               <li class="nav-item">
-                <%= link_to 'Home', root_path, class: 'nav-link' %>
+                <%= link_to root_path, class: 'nav-link' do %>
+                  <i class="fa-solid fa-house"></i> Home
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to 'About', home_about_path, class: 'nav-link' %>
+                <%= link_to home_about_path, class: 'nav-link' do %>
+                  <i class="fa-solid fa-link"></i> About
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
+                <%= link_to new_user_registration_path, class: 'nav-link' do %>
+                  <i class="fa-solid fa-user-plus"></i> Sign up
+                <% end %>
               </li>
               <li class="nav-item">
-                <%= link_to 'Log in', new_user_session_path, class: 'nav-link' %>
+                <%= link_to new_user_session_path, class: 'nav-link' do %>
+                  <i class="fa-solid fa-right-to-bracket"></i> Log in
+                <% end %>
               </li>
             <% end %>
           </ul>
