@@ -1,58 +1,69 @@
-<!-- 用户信息 -->
-<h2><%= @user.name %> さんのプロフィール</h2>
+<div class="container">
+  <div class="row">
+    <!-- 🔹 左侧栏（用户信息 + 投稿表单） -->
+    <div class="col-md-3">
+      <h2><%= @user.name %> さんのプロフィール</h2>
 
-<% if @user.profile_image.attached? %>
-  <%= image_tag @user.profile_image, width: 100, height: 100, class: "rounded-circle" %>
-<% else %>
-  <%= image_tag 'no_image.jpg', width: 100, height: 100, class: "rounded-circle" %>
-<% end %>
-
-<p><strong>自己紹介：</strong> <%= @user.introduction %></p>
-
-<!-- ✅ Capybara 测试用动态链接 -->
-<%= link_to '', user_path(@user), style: 'font-size: 0;' %>
-<%= link_to '', edit_user_path(@user), style: 'font-size: 0;' %>
-
-
-<% if current_user == @user %>
-  <p><strong>自己紹介：</strong> <%= @user.introduction %></p>
-  <%= link_to 'Edit My Profile', edit_user_path(current_user), class: 'btn btn-outline-primary btn-sm mt-2' %>
-<% end %>
-
-<hr>
-
-<!-- 投稿表单 -->
-<h3>New book</h3>
-
-<%= form_with(model: @book, url: books_path, local: true) do |f| %>
-  <% if @book.errors.any? %>
-    <ul>
-      <% @book.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% if @user.profile_image.attached? %>
+        <%= image_tag @user.profile_image, width: 100, height: 100, class: "rounded-circle mb-2" %>
+      <% else %>
+        <%= image_tag 'no_image.jpg', width: 100, height: 100, class: "rounded-circle mb-2" %>
       <% end %>
-    </ul>
-  <% end %>
 
-  <div>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+      <p><strong>自己紹介：</strong> <%= @user.introduction %></p>
+
+      <!-- ✅ Capybara 测试链接 -->
+      <%= link_to '', user_path(@user), style: 'font-size: 0;' %>
+      <%= link_to '', edit_user_path(@user), style: 'font-size: 0;' %>
+
+      <% if current_user == @user %>
+        <%= link_to 'Edit My Profile', edit_user_path(current_user), class: 'btn btn-outline-primary btn-sm mt-2' %>
+      <% end %>
+
+      <hr>
+
+      <h4>New book</h4>
+
+      <%= form_with(model: @book, url: books_path, local: true) do |f| %>
+        <% if @book.errors.any? %>
+          <ul>
+            <% @book.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <div>
+          <%= f.label :title %><br>
+          <%= f.text_field :title %>
+        </div>
+
+        <div>
+          <%= f.label :body %><br>
+          <%= f.text_area :body %>
+        </div>
+
+        <div>
+          <%= f.submit 'Create Book', class: 'btn btn-primary mt-2' %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- 🔹 右侧主内容（投稿一覧） -->
+    <div class="col-md-8 offset-md-1">
+      <h3 class="mb-4">
+        <i class="fa-solid fa-book-open"></i> 投稿一覧
+      </h3>
+
+      <% @books.each do |book| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <p><strong>タイトル：</strong> <%= link_to book.title, book_path(book) %></p>
+            <p><strong>感想：</strong> <%= book.body %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
+</div>
 
-  <div>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-
-  <%= f.submit 'Create Book' %>
-<% end %>
-
-<hr>
-
-<!-- 投稿列表 -->
-<h3>投稿一覧</h3>
-<% @books.each do |book| %>
-  <div style="border: 1px solid #ccc; margin-bottom: 10px; padding: 10px;">
-    <p><strong>タイトル：</strong> <%= link_to book.title, book_path(book) %></p>
-    <p><strong>感想：</strong> <%= book.body %></p>
-  </div>
-<% end %>
