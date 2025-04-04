@@ -31,7 +31,12 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
-    redirect_to user_path(current_user) unless @book.user == current_user
+    unless @book.user == current_user
+      raise "⛔️ 他人の投稿を編集しようとしています！"
+      flash[:alert] = "他人の投稿は編集できません。"
+      redirect_to books_path
+      return
+    end
   end
 
   def update

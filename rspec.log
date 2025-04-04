@@ -300,7 +300,7 @@ Failures:
      [31m  (compared using ==)[0m
      [36m# ./spec/system/03_finishing_touches_spec.rb:269:in `block (4 levels) in <main>'[0m
 
-Finished in 20.13 seconds (files took 1.21 seconds to load)
+Finished in 20.15 seconds (files took 1.21 seconds to load)
 [31m201 examples, 1 failure[0m
 
 Failed examples:
