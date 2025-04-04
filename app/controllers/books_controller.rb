@@ -65,7 +65,14 @@ class BooksController < ApplicationController
 
   def ensure_correct_user
     @book = Book.find(params[:id])
-    redirect_to user_path(current_user) unless @book.user == current_user
+    return if @book.user == current_user
+  
+    if action_name == "edit"
+      redirect_to books_path, alert: "他人の投稿は編集できません。"
+    else
+      redirect_to user_path(current_user), alert: "権限がありません。"
+    end
   end
+  
 end
 
