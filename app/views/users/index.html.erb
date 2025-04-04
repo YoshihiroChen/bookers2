@@ -2,7 +2,7 @@
   <div class="row">
     <!-- 🔹 左侧栏（用户信息 + 投稿） -->
     <div class="col-md-3">
-      <h2><%= @user.name %> さんのプロフィール</h2>
+      <h2><%= @user.name %> 's profile</h2>
 
       <% if @user.profile_image.attached? %>
         <%= image_tag @user.profile_image, width: 100, height: 100, class: "rounded-circle mb-2" %>
@@ -10,7 +10,7 @@
         <%= image_tag 'no_image.jpg', width: 100, height: 100, class: "rounded-circle mb-2" %>
       <% end %>
 
-      <p><strong>自己紹介：</strong> <%= @user.introduction %></p>
+      <p><strong>Introduction：</strong> <%= @user.introduction %></p>
 
       <% if current_user == @user %>
         <%= link_to 'Edit My Profile', edit_user_path(current_user), class: 'btn btn-outline-primary btn-sm mt-2' %>
@@ -49,15 +49,15 @@
     <!-- 🔹 右侧主内容（用户列表） -->
     <div class="col-md-8 offset-md-1">
       <h3 class="mb-4">
-        <i class="fa-solid fa-users"></i> ユーザー一覧
+        <i class="fa-solid fa-users"></i> All Users
       </h3>
 
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>名前</th>
-            <th>操作</th>
-            <th>プロフィール画像</th>
+            <th>Name</th>
+            <th>Action</th>
+            <th>Profile's image</th>
           </tr>
         </thead>
         <tbody>

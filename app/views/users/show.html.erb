@@ -2,7 +2,7 @@
   <div class="row">
     <!-- 🔹 左侧栏（用户信息 + 投稿表单） -->
     <div class="col-md-3">
-      <h2><%= @user.name %> さんのプロフィール</h2>
+      <h2><%= @user.name %> 's profile</h2>
 
       <% if @user.profile_image.attached? %>
         <%= image_tag @user.profile_image, width: 100, height: 100, class: "rounded-circle mb-2" %>
@@ -10,7 +10,7 @@
         <%= image_tag 'no_image.jpg', width: 100, height: 100, class: "rounded-circle mb-2" %>
       <% end %>
 
-      <p><strong>自己紹介：</strong> <%= @user.introduction %></p>
+      <p><strong>Introduction</strong> <%= @user.introduction %></p>
 
       <!-- ✅ Capybara 测试链接 -->
       <%= link_to '', user_path(@user), style: 'font-size: 0;' %>
@@ -53,14 +53,14 @@
     <!-- 🔹 右侧主内容（投稿一覧） -->
     <div class="col-md-8 offset-md-1">
       <h3 class="mb-4">
-        <i class="fa-solid fa-book-open"></i> 投稿一覧
+        <i class="fa-solid fa-book-open"></i> All Books
       </h3>
 
       <% @books.each do |book| %>
         <div class="card mb-3">
           <div class="card-body">
-            <p><strong>タイトル：</strong> <%= link_to book.title, book_path(book) %></p>
-            <p><strong>感想：</strong> <%= book.body %></p>
+            <p><strong>Title:</strong> <%= link_to book.title, book_path(book) %></p>
+            <p><strong>Opinion:</strong> <%= book.body %></p>
           </div>
         </div>
       <% end %>
