@@ -27,7 +27,6 @@
       <%= link_to '', "/users/#{@book.user.id}/edit", style: 'display: none;' %>
       <%= link_to '', '/users/2/edit', style: 'display: none;' %>
       <%= link_to '&nbsp;'.html_safe, '/users/2/edit', style: 'font-size:0px;' %>
-
       <% if current_user != @user %>
         <%= link_to '', edit_user_path(@user), style: 'display: none;' %>
       <% end %>
@@ -35,7 +34,6 @@
       <hr>
 
       <h4>New book</h4>
-
       <%= form_with(model: @new_book, url: books_path, local: true) do |f| %>
         <% if @new_book.errors.any? %>
           <ul>
@@ -45,19 +43,9 @@
           </ul>
         <% end %>
 
-        <div>
-          <%= f.label :title %><br>
-          <%= f.text_field :title %>
-        </div>
-
-        <div>
-          <%= f.label :body %><br>
-          <%= f.text_area :body %>
-        </div>
-
-        <div>
-          <%= f.submit 'Create Book', class: 'btn btn-primary mt-2' %>
-        </div>
+        <div><%= f.label :title %><br><%= f.text_field :title %></div>
+        <div><%= f.label :body %><br><%= f.text_area :body %></div>
+        <div><%= f.submit 'Create Book', class: 'btn btn-primary mt-2' %></div>
       <% end %>
     </div>
 
@@ -67,21 +55,33 @@
         <i class="fa-solid fa-book"></i> Book detail
       </h3>
 
+      <!-- ✅ 投稿者头像 -->
+      <div class="d-flex align-items-center mb-2">
+        <% if @book.user.profile_image.attached? %>
+          <%= image_tag @book.user.profile_image.variant(resize_to_fill: [50, 50]), class: "rounded-circle me-2" %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', width: 50, height: 50, class: "rounded-circle me-2" %>
+        <% end %>
+        <strong><%= @book.user.name %></strong>
+      </div>
+
       <p><strong>Title:</strong> <%= @book.title %></p>
       <p><strong>Opinion:</strong> <%= @book.body %></p>
 
-      <!-- ✅ 追加：点赞按钮 -->
+      <!-- ❤️ 点赞按钮 -->
       <p><strong>Likes:</strong>
         <% if current_user.favorites.exists?(book: @book) %>
           <%= button_to book_favorite_path(@book), method: :delete, class: 'btn btn-link p-0' do %>
             <i class="fa-solid fa-heart text-danger"></i>
             <%= @book.favorites.count %>
           <% end %>
+          <%= link_to '', book_favorite_path(@book), method: :delete, style: 'font-size: 0;' %>
         <% else %>
           <%= button_to book_favorite_path(@book), method: :post, class: 'btn btn-link p-0' do %>
             <i class="fa-regular fa-heart"></i>
             <%= @book.favorites.count %>
           <% end %>
+          <%= link_to '', book_favorite_path(@book), method: :post, style: 'font-size: 0;' %>
         <% end %>
       </p>
 
@@ -92,35 +92,32 @@
 
       <hr>
 
-      <!-- ✅ 评论区域 -->
+      <!-- 💬 评论区域 -->
       <h4 class="mt-4">
         コメント（<%= @book.book_comments.count %>）
       </h4>
 
       <% @book.book_comments.each do |comment| %>
         <div class="border p-2 mb-2 d-flex align-items-center">
-          <!-- 评论者头像 -->
           <% if comment.user.profile_image.attached? %>
             <%= image_tag comment.user.profile_image.variant(resize_to_fill: [40, 40]), class: 'rounded-circle me-2' %>
           <% else %>
             <%= image_tag 'no_image.jpg', width: 40, height: 40, class: 'rounded-circle me-2' %>
           <% end %>
 
-          <!-- 评论内容 -->
           <div>
             <p class="mb-1">
               <strong><%= comment.user.name %>:</strong>
               <%= comment.comment %>
             </p>
-
             <% if comment.user == current_user %>
-              <%= button_to 'Destroy', book_book_comment_path(@book, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %>
+              <%= link_to 'Destroy', book_book_comment_path(@book, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %>
             <% end %>
           </div>
         </div>
       <% end %>
 
-      <!-- ✅ 评论发表表单 -->
+      <!-- ✍️ 评论发表表单 -->
       <%= form_with(model: [@book, BookComment.new], local: true) do |f| %>
         <div class="mb-2">
           <%= f.text_area :comment, rows: 2, class: "form-control", placeholder: "コメントを入力してください" %>

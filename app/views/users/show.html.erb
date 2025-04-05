@@ -69,11 +69,15 @@
                   <i class="fa-solid fa-heart text-danger"></i>
                   <%= book.favorites.count %>
                 <% end %>
+                <!-- ✅ 隐藏链接（取消喜欢） -->
+                <%= link_to '', book_favorite_path(book), style: 'font-size:0;', method: :delete %>
               <% else %>
                 <%= button_to book_favorite_path(book), method: :post, class: 'btn btn-link p-0' do %>
                   <i class="fa-regular fa-heart"></i>
                   <%= book.favorites.count %>
                 <% end %>
+                <!-- ✅ 隐藏链接（添加喜欢） -->
+                <%= link_to '', book_favorite_path(book), style: 'font-size:0;', method: :post %>
               <% end %>
             </p>
 

@@ -5,6 +5,16 @@ UsersController
 [32m      レスポンスが成功すること[0m
 [32m      @userが正しく設定されていること[0m
 
+BookCommentモデルのテスト
+  バリデーションのテスト
+    commentカラム
+[32m      空欄でないこと[0m
+  アソシエーションのテスト
+    Bookモデルとの関係
+[32m      N:1となっている[0m
+    Userモデルとの関係
+[32m      N:1となっている[0m
+
 Bookモデルのテスト
   バリデーションのテスト
     titleカラム
@@ -14,6 +24,15 @@ Bookモデルのテスト
 [32m      200文字以下であること: 200文字は〇[0m
 [32m      200文字以下であること: 201文字は×[0m
   アソシエーションのテスト
+    Userモデルとの関係
+[32m      N:1となっている[0m
+
+Favoriteモデルのテスト
+  バリデーションのテスト
+[32m    ユーザーは一つの投稿に一つしかいいねできない[0m
+  アソシエーションのテスト
+    Bookモデルとの関係
+[32m      N:1となっている[0m
     Userモデルとの関係
 [32m      N:1となっている[0m
 
@@ -289,6 +308,100 @@ Userモデルのテスト
 [32m      投稿一覧画面でレンチアイコンが表示される[0m
 [32m      投稿詳細画面でレンチアイコンが表示される[0m
 
-Finished in 20.05 seconds (files took 1.28 seconds to load)
-[32m201 examples, 0 failures[0m
+[STEP4] いいねとコメントのテスト
+  投稿一覧画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[32m      いいねボタンが表示される[0m
+[32m      コメント数が表示される[0m
+    いいね作成機能のテスト
+[32m      自分のいいねが正しく保存される[0m
+[32m      リダイレクト先が投稿一覧画面になっている[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+    いいね削除機能のテスト
+[32m      自分のいいねが正しく削除される[0m
+[32m      リダイレクト先が投稿一覧画面になっている[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+  自分の投稿詳細画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[32m      いいねボタンが表示される[0m
+[32m      コメント数が表示される[0m
+[32m      コメント一覧でコメント投稿者の画像が表示される: fallbackの画像がサイドバーの1つ＋Book detail直下の1つ＋コメント一覧(2人)の2つの計4つ存在する[0m
+[32m      コメント一覧でコメント投稿者の名前が表示される[0m
+[32m      コメント一覧でコメントの内容が表示される[0m
+[32m      自分が投稿したコメントの削除ボタンが表示される[0m
+[32m      他人が投稿したコメントの削除ボタンは表示されない[0m
+[32m      コメント投稿フォームが表示される[0m
+[31m      送信ボタンが表示される (FAILED - 1)[0m
+    いいね機能のテスト
+[32m      自分のいいねが正しく保存される[0m
+[32m      リダイレクト先が、いいねをした投稿詳細画面になっている[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+    コメント追加機能のテスト
+[31m      自分のコメントが正しく保存される (FAILED - 2)[0m
+[31m      リダイレクト先が、コメントをした投稿詳細画面になっている (FAILED - 3)[0m
+[31m      リダイレクト先でコメント数が正しく更新されている (FAILED - 4)[0m
+[31m      リダイレクト先で新しいコメントが表示されている (FAILED - 5)[0m
+    コメント削除機能のテスト
+[32m      自分のコメントが正しく削除される[0m
+[32m      リダイレクト先が、コメントをしていた投稿詳細画面になっている[0m
+[32m      リダイレクト先でコメント数が正しく更新されている[0m
+[32m      リダイレクト先で削除したコメントは表示されない[0m
+  自分のユーザ詳細画面のテスト[課題4追加分]
+    表示の確認
+[32m      いいねボタンのハートアイコンが表示される[0m
+[32m      いいねボタンが表示される[0m
+[32m      コメント数が表示される[0m
+    いいね作成機能のテスト
+[32m      自分のいいねが正しく保存される[0m
+[32m      リダイレクト先が自分のユーザ詳細画面になっている[0m
+[32m      リダイレクト先でいいね数が正しく更新されている[0m
+
+Failures:
+
+  1) [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] 表示の確認 送信ボタンが表示される
+     [31mFailure/Error: expect(page).to have_button '送信'[0m
+     [31m  expected to find button "送信" that is not disabled but there were no matches[0m
+     [36m# ./spec/system/04_favorite_comment_spec.rb:109:in `block (4 levels) in <main>'[0m
+
+  2) [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] コメント追加機能のテスト 自分のコメントが正しく保存される
+     [31mFailure/Error: expect { click_button '送信' }.to change(user.book_comments, :count).by(1)[0m
+     [31m[0m
+     [31mCapybara::ElementNotFound:[0m
+     [31m  Unable to find button "送信" that is not disabled[0m
+     [36m# ./spec/system/04_favorite_comment_spec.rb:131:in `block (5 levels) in <main>'[0m
+     [36m# ./spec/system/04_favorite_comment_spec.rb:131:in `block (4 levels) in <main>'[0m
+
+  3) [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] コメント追加機能のテスト リダイレクト先が、コメントをした投稿詳細画面になっている
+     [31mFailure/Error: click_button '送信'[0m
+     [31m[0m
+     [31mCapybara::ElementNotFound:[0m
+     [31m  Unable to find button "送信" that is not disabled[0m
+     [36m# ./spec/system/04_favorite_comment_spec.rb:134:in `block (4 levels) in <main>'[0m
+
+  4) [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] コメント追加機能のテスト リダイレクト先でコメント数が正しく更新されている
+     [31mFailure/Error: click_button '送信'[0m
+     [31m[0m
+     [31mCapybara::ElementNotFound:[0m
+     [31m  Unable to find button "送信" that is not disabled[0m
+     [36m# ./spec/system/04_favorite_comment_spec.rb:138:in `block (4 levels) in <main>'[0m
+
+  5) [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] コメント追加機能のテスト リダイレクト先で新しいコメントが表示されている
+     [31mFailure/Error: click_button '送信'[0m
+     [31m[0m
+     [31mCapybara::ElementNotFound:[0m
+     [31m  Unable to find button "送信" that is not disabled[0m
+     [36m# ./spec/system/04_favorite_comment_spec.rb:142:in `block (4 levels) in <main>'[0m
+
+Finished in 26.27 seconds (files took 1.26 seconds to load)
+[31m243 examples, 5 failures[0m
+
+Failed examples:
+
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:108[0m [36m# [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] 表示の確認 送信ボタンが表示される[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:130[0m [36m# [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] コメント追加機能のテスト 自分のコメントが正しく保存される[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:133[0m [36m# [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] コメント追加機能のテスト リダイレクト先が、コメントをした投稿詳細画面になっている[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:137[0m [36m# [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] コメント追加機能のテスト リダイレクト先でコメント数が正しく更新されている[0m
+[31mrspec ./spec/system/04_favorite_comment_spec.rb:141[0m [36m# [STEP4] いいねとコメントのテスト 自分の投稿詳細画面のテスト[課題4追加分] コメント追加機能のテスト リダイレクト先で新しいコメントが表示されている[0m
 
