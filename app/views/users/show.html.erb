@@ -61,10 +61,30 @@
           <div class="card-body">
             <p><strong>Title:</strong> <%= link_to book.title, book_path(book) %></p>
             <p><strong>Opinion:</strong> <%= book.body %></p>
+
+            <!-- ❤️ 点赞按钮 -->
+            <p>
+              <% if current_user.favorites.exists?(book: book) %>
+                <%= button_to book_favorite_path(book), method: :delete, class: 'btn btn-link p-0' do %>
+                  <i class="fa-solid fa-heart text-danger"></i>
+                  <%= book.favorites.count %>
+                <% end %>
+              <% else %>
+                <%= button_to book_favorite_path(book), method: :post, class: 'btn btn-link p-0' do %>
+                  <i class="fa-regular fa-heart"></i>
+                  <%= book.favorites.count %>
+                <% end %>
+              <% end %>
+            </p>
+
+            <!-- 💬 评论数 -->
+            <p>
+              <i class="fa-solid fa-comment"></i>
+              コメント数: <%= book.book_comments.count %>
+            </p>
           </div>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-

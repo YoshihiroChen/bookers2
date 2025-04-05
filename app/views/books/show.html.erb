@@ -61,18 +61,71 @@
       <% end %>
     </div>
 
-    <!-- 🔹 右侧主内容：书籍详情 -->
+    <!-- 🔹 右侧主内容：书籍详情 + 评论 -->
     <div class="col-md-8 offset-md-1">
       <h3 class="mb-4">
         <i class="fa-solid fa-book"></i> Book detail
       </h3>
 
-      <p><strong>タイトル：</strong> <%= @book.title %></p>
-      <p><strong>感想：</strong> <%= @book.body %></p>
+      <p><strong>Title:</strong> <%= @book.title %></p>
+      <p><strong>Opinion:</strong> <%= @book.body %></p>
+
+      <!-- ✅ 追加：点赞按钮 -->
+      <p><strong>Likes:</strong>
+        <% if current_user.favorites.exists?(book: @book) %>
+          <%= button_to book_favorite_path(@book), method: :delete, class: 'btn btn-link p-0' do %>
+            <i class="fa-solid fa-heart text-danger"></i>
+            <%= @book.favorites.count %>
+          <% end %>
+        <% else %>
+          <%= button_to book_favorite_path(@book), method: :post, class: 'btn btn-link p-0' do %>
+            <i class="fa-regular fa-heart"></i>
+            <%= @book.favorites.count %>
+          <% end %>
+        <% end %>
+      </p>
 
       <% if @user == current_user %>
         <%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-sm btn-outline-secondary' %>
         <%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-sm btn-danger ms-2' %>
+      <% end %>
+
+      <hr>
+
+      <!-- ✅ 评论区域 -->
+      <h4 class="mt-4">
+        コメント（<%= @book.book_comments.count %>）
+      </h4>
+
+      <% @book.book_comments.each do |comment| %>
+        <div class="border p-2 mb-2 d-flex align-items-center">
+          <!-- 评论者头像 -->
+          <% if comment.user.profile_image.attached? %>
+            <%= image_tag comment.user.profile_image.variant(resize_to_fill: [40, 40]), class: 'rounded-circle me-2' %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', width: 40, height: 40, class: 'rounded-circle me-2' %>
+          <% end %>
+
+          <!-- 评论内容 -->
+          <div>
+            <p class="mb-1">
+              <strong><%= comment.user.name %>:</strong>
+              <%= comment.comment %>
+            </p>
+
+            <% if comment.user == current_user %>
+              <%= button_to 'Destroy', book_book_comment_path(@book, comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- ✅ 评论发表表单 -->
+      <%= form_with(model: [@book, BookComment.new], local: true) do |f| %>
+        <div class="mb-2">
+          <%= f.text_area :comment, rows: 2, class: "form-control", placeholder: "コメントを入力してください" %>
+        </div>
+        <%= f.submit 'コメントする', class: 'btn btn-primary btn-sm' %>
       <% end %>
     </div>
   </div>

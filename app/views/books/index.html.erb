@@ -58,6 +58,8 @@
             <th>Opinion</th>
             <th>Owner</th>
             <th>Details</th>
+            <th>Likes</th>
+            <th>Comments</th> <!-- 💬 评论列 -->
           </tr>
         </thead>
         <tbody>
@@ -77,6 +79,23 @@
               </td>
               <td>
                 <%= link_to 'Show', book_path(book), class: 'btn btn-sm btn-info' %>
+              </td>
+              <td>
+                <% if current_user.favorites.exists?(book: book) %>
+                  <%= button_to book_favorite_path(book), method: :delete, class: 'btn btn-link p-0' do %>
+                    <i class="fa-solid fa-heart text-danger"></i>
+                    <%= book.favorites.count %>
+                  <% end %>
+                <% else %>
+                  <%= button_to book_favorite_path(book), method: :post, class: 'btn btn-link p-0' do %>
+                    <i class="fa-regular fa-heart"></i>
+                    <%= book.favorites.count %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <i class="fa-solid fa-comment"></i>
+                <%= book.book_comments.count %>
               </td>
             </tr>
           <% end %>
