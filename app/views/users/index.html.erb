@@ -2,48 +2,7 @@
   <div class="row">
     <!-- 🔹 左侧栏（用户信息 + 投稿） -->
     <div class="col-md-3">
-      <h2><%= @user.name %> 's profile</h2>
-
-      <% if @user.profile_image.attached? %>
-        <%= image_tag @user.profile_image, width: 100, height: 100, class: "rounded-circle mb-2" %>
-      <% else %>
-        <%= image_tag 'no_image.jpg', width: 100, height: 100, class: "rounded-circle mb-2" %>
-      <% end %>
-
-      <p><strong>Introduction：</strong> <%= @user.introduction %></p>
-
-      <% if current_user == @user %>
-        <%= link_to 'Edit My Profile', edit_user_path(current_user), class: 'btn btn-outline-primary btn-sm mt-2' %>
-        <i class="fa-solid fa-user-gear"></i> Edit My Profile
-      <% end %>
-
-      <hr>
-
-      <h4>New book</h4>
-
-      <%= form_with(model: @book, url: books_path, local: true) do |f| %>
-        <% if @book.errors.any? %>
-          <ul>
-            <% @book.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        <% end %>
-
-        <div>
-          <%= f.label :title %><br>
-          <%= f.text_field :title %>
-        </div>
-
-        <div>
-          <%= f.label :body %><br>
-          <%= f.text_area :body %>
-        </div>
-
-        <div>
-          <%= f.submit 'Create Book', class: 'btn btn-primary mt-2' %>
-        </div>
-      <% end %>
+      <%= render 'shared/sidebar', user: @user, new_book: Book.new %>
     </div>
 
     <!-- 🔹 右侧主内容（用户列表） -->
