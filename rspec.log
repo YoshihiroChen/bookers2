@@ -358,6 +358,6 @@ Userモデルのテスト
 [32m      リダイレクト先が自分のユーザ詳細画面になっている[0m
 [32m      リダイレクト先でいいね数が正しく更新されている[0m
 
-Finished in 26.04 seconds (files took 1.35 seconds to load)
+Finished in 26.19 seconds (files took 1.97 seconds to load)
 [32m243 examples, 0 failures[0m
 
